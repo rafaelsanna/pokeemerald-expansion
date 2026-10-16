@@ -745,6 +745,9 @@ extern u8 gTriedEvolving;
 extern const u16 gFacilityClassToPicIndex[];
 extern const enum TrainerClassID gFacilityClassToTrainerClass[];
 extern const struct SpeciesInfo gSpeciesInfo[];
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
+extern const struct SpriteFrameImage gPicTable_GreninjaMegaShiny[];
+#endif
 extern const u32 gExperienceTables[][MAX_LEVEL + 1];
 extern const u8 gPPUpGetMask[];
 extern const u8 gPPUpClearMask[];

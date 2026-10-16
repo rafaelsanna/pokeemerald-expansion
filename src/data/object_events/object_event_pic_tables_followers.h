@@ -1400,6 +1400,11 @@ static const struct SpriteFrameImage sPicTable_Bayleef[] = {
 static const struct SpriteFrameImage sPicTable_Meganium[] = {
     overworld_ascending_frames(gObjectEventPic_Meganium, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
+static const struct SpriteFrameImage sPicTable_MeganiumMega[] = {
+    overworld_ascending_frames(gObjectEventPic_MeganiumMega, 4, 4),
+};
+#endif // P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
 #if P_GENDER_DIFFERENCES
 static const struct SpriteFrameImage sPicTable_MeganiumF[] = {
     overworld_ascending_frames(gObjectEventPic_MeganiumF, 4, 4),
@@ -1434,6 +1439,11 @@ static const struct SpriteFrameImage sPicTable_Croconaw[] = {
 static const struct SpriteFrameImage sPicTable_Feraligatr[] = {
     overworld_ascending_frames(gObjectEventPic_Feraligatr, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
+static const struct SpriteFrameImage sPicTable_FeraligatrMega[] = {
+    overworld_ascending_frames(gObjectEventPic_FeraligatrMega, 4, 4),
+};
+#endif // P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
 #endif //P_FAMILY_TOTODILE
 
 #if P_FAMILY_SENTRET
@@ -4518,6 +4528,11 @@ static const struct SpriteFrameImage sPicTable_Quilladin[] = {
 static const struct SpriteFrameImage sPicTable_Chesnaught[] = {
     overworld_ascending_frames(gObjectEventPic_Chesnaught, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
+static const struct SpriteFrameImage sPicTable_ChesnaughtMega[] = {
+    overworld_ascending_frames(gObjectEventPic_ChesnaughtMega, 4, 4),
+};
+#endif // P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
 #endif //P_FAMILY_CHESPIN
 
 #if P_FAMILY_FENNEKIN
@@ -4542,6 +4557,14 @@ static const struct SpriteFrameImage sPicTable_Frogadier[] = {
 static const struct SpriteFrameImage sPicTable_Greninja[] = {
     overworld_ascending_frames(gObjectEventPic_Greninja, 4, 4),
 };
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
+static const struct SpriteFrameImage sPicTable_GreninjaMega[] = {
+    overworld_ascending_frames(gObjectEventPic_GreninjaMega, 4, 4),
+};
+const struct SpriteFrameImage gPicTable_GreninjaMegaShiny[] = {
+    overworld_ascending_frames(gObjectEventPic_GreninjaMegaShiny, 4, 4),
+};
+#endif // P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
 #if OW_BATTLE_ONLY_FORMS
 static const struct SpriteFrameImage sPicTable_GreninjaAsh[] = {
     overworld_ascending_frames(gObjectEventPic_GreninjaAsh, 4, 4),

@@ -6652,10 +6652,10 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_MeganiumMega[] = INCGFX_U16("graphics/pokemon/meganium/mega/shiny.pal", ".gbapal");
     const u8 gMonIcon_MeganiumMega[] = INCGFX_U8("graphics/pokemon/meganium/mega/icon.png", ".4bpp.rlfast");
 #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
-    // const u32 gObjectEventPic_MeganiumMega[] = INCGFX_COMP("graphics/pokemon/meganium/mega/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_MeganiumMega[] = INCGFX_COMP("graphics/pokemon/meganium/mega/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    // const u16 gOverworldPalette_MeganiumMega[] = INCGFX_U16("graphics/pokemon/meganium/mega/overworld_normal.pal", ".gbapal");
-    // const u16 gShinyOverworldPalette_MeganiumMega[] = INCGFX_U16("graphics/pokemon/meganium/mega/overworld_shiny.pal", ".gbapal");
+    const u16 gOverworldPalette_MeganiumMega[] = INCGFX_U16("graphics/pokemon/meganium/mega/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_MeganiumMega[] = INCGFX_U16("graphics/pokemon/meganium/mega/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 #endif //P_GEN_9_MEGA_EVOLUTIONS
@@ -6848,10 +6848,10 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_FeraligatrMega[] = INCGFX_U16("graphics/pokemon/feraligatr/mega/shiny.pal", ".gbapal");
     const u8 gMonIcon_FeraligatrMega[] = INCGFX_U8("graphics/pokemon/feraligatr/mega/icon.png", ".4bpp.rlfast");
 #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
-    // const u32 gObjectEventPic_FeraligatrMega[] = INCGFX_COMP("graphics/pokemon/feraligatr/mega/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_FeraligatrMega[] = INCGFX_COMP("graphics/pokemon/feraligatr/mega/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    // const u16 gOverworldPalette_FeraligatrMega[] = INCGFX_U16("graphics/pokemon/feraligatr/mega/overworld_normal.pal", ".gbapal");
-    // const u16 gShinyOverworldPalette_FeraligatrMega[] = INCGFX_U16("graphics/pokemon/feraligatr/mega/overworld_shiny.pal", ".gbapal");
+    const u16 gOverworldPalette_FeraligatrMega[] = INCGFX_U16("graphics/pokemon/feraligatr/mega/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_FeraligatrMega[] = INCGFX_U16("graphics/pokemon/feraligatr/mega/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 #endif //P_GEN_9_MEGA_EVOLUTIONS
@@ -19569,10 +19569,10 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_ChesnaughtMega[] = INCGFX_U16("graphics/pokemon/chesnaught/mega/shiny.pal", ".gbapal");
     const u8 gMonIcon_ChesnaughtMega[] = INCGFX_U8("graphics/pokemon/chesnaught/mega/icon.png", ".4bpp.rlfast");
 #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
-    // const u32 gObjectEventPic_ChesnaughtMega[] = INCGFX_COMP("graphics/pokemon/chesnaught/mega/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_ChesnaughtMega[] = INCGFX_COMP("graphics/pokemon/chesnaught/mega/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    // const u16 gOverworldPalette_ChesnaughtMega[] = INCGFX_U16("graphics/pokemon/chesnaught/mega/overworld_normal.pal", ".gbapal");
-    // const u16 gShinyOverworldPalette_ChesnaughtMega[] = INCGFX_U16("graphics/pokemon/chesnaught/mega/overworld_shiny.pal", ".gbapal");
+    const u16 gOverworldPalette_ChesnaughtMega[] = INCGFX_U16("graphics/pokemon/chesnaught/mega/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_ChesnaughtMega[] = INCGFX_U16("graphics/pokemon/chesnaught/mega/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 #endif //P_GEN_9_MEGA_EVOLUTIONS
@@ -19712,10 +19712,11 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gMonShinyPalette_GreninjaMega[] = INCGFX_U16("graphics/pokemon/greninja/mega/shiny.pal", ".gbapal");
     const u8 gMonIcon_GreninjaMega[] = INCGFX_U8("graphics/pokemon/greninja/mega/icon.png", ".4bpp.rlfast");
 #if OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
-    // const u32 gObjectEventPic_GreninjaMega[] = INCGFX_COMP("graphics/pokemon/greninja/mega/overworld.png", ".4bpp");
+    const u32 gObjectEventPic_GreninjaMega[] = INCGFX_COMP("graphics/pokemon/greninja/mega/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+    const u32 gObjectEventPic_GreninjaMegaShiny[] = INCGFX_COMP("graphics/pokemon/greninja/mega/overworld_shiny.png", ".4bpp", "-mwidth 4 -mheight 4");
 #if OW_PKMN_OBJECTS_SHARE_PALETTES == FALSE
-    // const u16 gOverworldPalette_GreninjaMega[] = INCGFX_U16("graphics/pokemon/greninja/mega/overworld_normal.pal", ".gbapal");
-    // const u16 gShinyOverworldPalette_GreninjaMega[] = INCGFX_U16("graphics/pokemon/greninja/mega/overworld_shiny.pal", ".gbapal");
+    const u16 gOverworldPalette_GreninjaMega[] = INCGFX_U16("graphics/pokemon/greninja/mega/overworld_normal.pal", ".gbapal");
+    const u16 gShinyOverworldPalette_GreninjaMega[] = INCGFX_U16("graphics/pokemon/greninja/mega/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
 #endif //P_GEN_9_MEGA_EVOLUTIONS

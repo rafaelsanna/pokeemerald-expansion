@@ -1299,6 +1299,102 @@ const union AnimCmd *const sAnimTable_Following_Asym[] = {
     [ANIM_EXIT_POKEBALL_FAST_EAST] = sAnim_ExitPokeballFastEast_Asym,
 };
 
+// Three frames for each direction: south 0-2, north 3-5, west 6-8,
+// east 9-11. East is drawn separately; none of its frames are flipped.
+#define FOLLOWER_ASYM3F_FACE(name, frame) \
+static const union AnimCmd name[] = { ANIMCMD_FRAME(frame, 16), ANIMCMD_JUMP(0) }
+
+#define FOLLOWER_ASYM3F_WALK(name, frame, delay)                                      \
+static const union AnimCmd name[] = {                                                  \
+    ANIMCMD_FRAME(frame, delay), ANIMCMD_FRAME((frame) + 1, delay),                     \
+    ANIMCMD_FRAME(frame, delay), ANIMCMD_FRAME((frame) + 2, delay), ANIMCMD_JUMP(0),   \
+}
+
+FOLLOWER_ASYM3F_FACE(sAnim_FaceSouth3F, 0);
+FOLLOWER_ASYM3F_FACE(sAnim_FaceNorth3F, 3);
+FOLLOWER_ASYM3F_FACE(sAnim_FaceWest3F, 6);
+FOLLOWER_ASYM3F_FACE(sAnim_FaceEast3F, 9);
+FOLLOWER_ASYM3F_WALK(sAnim_GoSouth3F, 0, 6);
+FOLLOWER_ASYM3F_WALK(sAnim_GoNorth3F, 3, 6);
+FOLLOWER_ASYM3F_WALK(sAnim_GoWest3F, 6, 6);
+FOLLOWER_ASYM3F_WALK(sAnim_GoEast3F, 9, 6);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastSouth3F, 0, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastNorth3F, 3, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastWest3F, 6, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastEast3F, 9, 4);
+
+#undef FOLLOWER_ASYM3F_FACE
+#undef FOLLOWER_ASYM3F_WALK
+
+// Keep each direction when entering or leaving a Poké Ball. The stock
+// 2-frame routines finish on frames 0/2/4/6, which are not the 3-frame idles.
+#define FOLLOWER_ASYM3F_ENTER(name, frame)            \
+static const union AnimCmd name[] = {                  \
+    ANIMCMD_FRAME(frame, 8),                           \
+    ANIMCMD_FRAME(4, 1), ANIMCMD_FRAME(3, 1),           \
+    ANIMCMD_FRAME(2, 1), ANIMCMD_FRAME(1, 1),           \
+    ANIMCMD_FRAME(0, 1), ANIMCMD_FRAME(0, 3),           \
+    ANIMCMD_JUMP(0),                                   \
+}
+
+#define FOLLOWER_ASYM3F_EXIT(name, frame)             \
+static const union AnimCmd name[] = {                  \
+    ANIMCMD_FRAME(0, 1), ANIMCMD_FRAME(0, 3),           \
+    ANIMCMD_FRAME(0, 1), ANIMCMD_FRAME(1, 1),           \
+    ANIMCMD_FRAME(2, 1), ANIMCMD_FRAME(3, 1),           \
+    ANIMCMD_FRAME(4, 1), ANIMCMD_FRAME(frame, 8),       \
+    ANIMCMD_JUMP(0),                                   \
+}
+
+#define FOLLOWER_ASYM3F_FAST_EXIT(name, frame)        \
+static const union AnimCmd name[] = {                  \
+    ANIMCMD_FRAME(0, 1), ANIMCMD_FRAME(1, 1),           \
+    ANIMCMD_FRAME(2, 1), ANIMCMD_FRAME(3, 1),           \
+    ANIMCMD_FRAME(4, 1), ANIMCMD_FRAME(frame, 2),       \
+    ANIMCMD_FRAME(frame, 1), ANIMCMD_JUMP(0),          \
+}
+
+FOLLOWER_ASYM3F_ENTER(sAnim_EnterNorth3F, 3);
+FOLLOWER_ASYM3F_ENTER(sAnim_EnterWest3F, 6);
+FOLLOWER_ASYM3F_ENTER(sAnim_EnterEast3F, 9);
+FOLLOWER_ASYM3F_EXIT(sAnim_ExitPokeballNorth3F, 3);
+FOLLOWER_ASYM3F_EXIT(sAnim_ExitPokeballWest3F, 6);
+FOLLOWER_ASYM3F_EXIT(sAnim_ExitPokeballEast3F, 9);
+FOLLOWER_ASYM3F_FAST_EXIT(sAnim_ExitPokeballFastNorth3F, 3);
+FOLLOWER_ASYM3F_FAST_EXIT(sAnim_ExitPokeballFastWest3F, 6);
+FOLLOWER_ASYM3F_FAST_EXIT(sAnim_ExitPokeballFastEast3F, 9);
+
+#undef FOLLOWER_ASYM3F_ENTER
+#undef FOLLOWER_ASYM3F_EXIT
+#undef FOLLOWER_ASYM3F_FAST_EXIT
+
+const union AnimCmd *const sAnimTable_Following_Asym3F[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth3F,
+    [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth3F,
+    [ANIM_STD_FACE_WEST] = sAnim_FaceWest3F,
+    [ANIM_STD_FACE_EAST] = sAnim_FaceEast3F,
+    [ANIM_STD_GO_SOUTH] = sAnim_GoSouth3F,
+    [ANIM_STD_GO_NORTH] = sAnim_GoNorth3F,
+    [ANIM_STD_GO_WEST] = sAnim_GoWest3F,
+    [ANIM_STD_GO_EAST] = sAnim_GoEast3F,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_GoFastSouth3F,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_GoFastNorth3F,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_GoFastWest3F,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_GoFastEast3F,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_EnterSouth,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_EnterNorth3F,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_EnterWest3F,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_EnterEast3F,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_ExitPokeballSouth,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_ExitPokeballNorth3F,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_ExitPokeballWest3F,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_ExitPokeballEast3F,
+    [ANIM_EXIT_POKEBALL_FAST_SOUTH] = sAnim_ExitPokeballFastSouth,
+    [ANIM_EXIT_POKEBALL_FAST_NORTH] = sAnim_ExitPokeballFastNorth3F,
+    [ANIM_EXIT_POKEBALL_FAST_WEST] = sAnim_ExitPokeballFastWest3F,
+    [ANIM_EXIT_POKEBALL_FAST_EAST] = sAnim_ExitPokeballFastEast3F,
+};
+
 static const union AnimCmd *const sAnimTable_HoOh[] = {
     [ANIM_STD_FACE_SOUTH] = sAnim_FaceSouth,
     [ANIM_STD_FACE_NORTH] = sAnim_FaceNorth,

@@ -2146,6 +2146,10 @@ struct ObjectEvent *GetFollowerObject(void)
 const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(enum Species species, bool32 shiny, bool32 female)
 {
     const struct ObjectEventGraphicsInfo *graphicsInfo = NULL;
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_POKEMON_OBJECT_EVENTS && OW_BATTLE_ONLY_FORMS
+    static struct ObjectEventGraphicsInfo shinyMegaGreninjaGraphicsInfo;
+    static bool8 shinyMegaGreninjaGraphicsInfoInitialized;
+#endif
 #if OW_POKEMON_OBJECT_EVENTS
     switch (species)
     {
@@ -2173,6 +2177,22 @@ const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(enum Species species
             return &gSpeciesInfo[SPECIES_NONE].overworldData;
         return NULL;
     }
+
+#if P_GEN_9_MEGA_EVOLUTIONS && OW_BATTLE_ONLY_FORMS
+    // Mega Greninja's shiny has different pixel art, not just a new palette.
+    // Keep the normal and shiny sheets separate without adding a graphics-info
+    // field to every species.
+    if (species == SPECIES_GRENINJA_MEGA && shiny)
+    {
+        if (!shinyMegaGreninjaGraphicsInfoInitialized)
+        {
+            shinyMegaGreninjaGraphicsInfo = *graphicsInfo;
+            shinyMegaGreninjaGraphicsInfo.images = gPicTable_GreninjaMegaShiny;
+            shinyMegaGreninjaGraphicsInfoInitialized = TRUE;
+        }
+        return &shinyMegaGreninjaGraphicsInfo;
+    }
+#endif
 #endif // OW_POKEMON_OBJECT_EVENTS
     return graphicsInfo;
 }
