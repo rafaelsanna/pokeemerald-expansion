@@ -1307,21 +1307,22 @@ static const union AnimCmd name[] = { ANIMCMD_FRAME(frame, 16), ANIMCMD_JUMP(0) 
 #define FOLLOWER_ASYM3F_WALK(name, frame, delay)                                      \
 static const union AnimCmd name[] = {                                                  \
     ANIMCMD_FRAME(frame, delay), ANIMCMD_FRAME((frame) + 1, delay),                     \
-    ANIMCMD_FRAME(frame, delay), ANIMCMD_FRAME((frame) + 2, delay), ANIMCMD_JUMP(0),   \
+    ANIMCMD_FRAME((frame) + 2, delay), ANIMCMD_FRAME(frame, delay), ANIMCMD_JUMP(0),   \
 }
 
 FOLLOWER_ASYM3F_FACE(sAnim_FaceSouth3F, 0);
 FOLLOWER_ASYM3F_FACE(sAnim_FaceNorth3F, 3);
 FOLLOWER_ASYM3F_FACE(sAnim_FaceWest3F, 6);
 FOLLOWER_ASYM3F_FACE(sAnim_FaceEast3F, 9);
-FOLLOWER_ASYM3F_WALK(sAnim_GoSouth3F, 0, 6);
-FOLLOWER_ASYM3F_WALK(sAnim_GoNorth3F, 3, 6);
-FOLLOWER_ASYM3F_WALK(sAnim_GoWest3F, 6, 6);
-FOLLOWER_ASYM3F_WALK(sAnim_GoEast3F, 9, 6);
-FOLLOWER_ASYM3F_WALK(sAnim_GoFastSouth3F, 0, 4);
-FOLLOWER_ASYM3F_WALK(sAnim_GoFastNorth3F, 3, 4);
-FOLLOWER_ASYM3F_WALK(sAnim_GoFastWest3F, 6, 4);
-FOLLOWER_ASYM3F_WALK(sAnim_GoFastEast3F, 9, 4);
+// Show all three poses within a 16-frame walk or an 8-frame run.
+FOLLOWER_ASYM3F_WALK(sAnim_GoSouth3F, 0, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoNorth3F, 3, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoWest3F, 6, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoEast3F, 9, 4);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastSouth3F, 0, 2);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastNorth3F, 3, 2);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastWest3F, 6, 2);
+FOLLOWER_ASYM3F_WALK(sAnim_GoFastEast3F, 9, 2);
 
 #undef FOLLOWER_ASYM3F_FACE
 #undef FOLLOWER_ASYM3F_WALK
@@ -1716,6 +1717,12 @@ static const struct StepAnimTable sStepAnimTables[] = {
     {
         .anims = sAnimTable_Following_Asym,
         .animPos = {1, 3, 0, 2},
+    },
+    {
+        .anims = sAnimTable_Following_Asym3F,
+        // Both 0 and 3 are idle; restart the complete three-pose gait
+        // on each step, and keep the idle pose when changing direction.
+        .animPos = {0, 3, 0, 0},
     },
     {
         .anims = sAnimTable_BrendanMayNormal,
